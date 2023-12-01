@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\pruebaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,27 +16,35 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware("auth");
 
 
-
-
-
-/* Route::get('/jc', function () {
-    return view('home');
-}); */
-
-
+//restrinjo ruta register
 
 Auth::routes(["register"=>false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/pruebagit', function (){
-    return "prueba git" ;
+//Route::get('/miembros',)->name("pruebagit");
+
+
+
+
+
+//Pruebas 
+
+Route::get('/pruebagit',pruebaController::class)->name("pruebagit");
+
+Route::get('/prueba', function () {
+    return view("prueba") ; 
 });
 
+Route::get('/miembros', function () {
+    return view("miembros.index") ; 
+})->name("miembros");
 
-
+Route::get('/miembros/create', function () {
+    return view("miembros.create") ; 
+})->name("miembros.create");
 
 
