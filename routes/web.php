@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MiembroController;
 use App\Http\Controllers\pruebaController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,9 +40,7 @@ Route::get('/prueba', function () {
     return view("prueba") ; 
 });
 
-Route::get('/miembros', function () {
-    return view("miembros.index") ; 
-})->name("miembros");
+Route::get('/miembros',[MiembroController::class , "index" ])->name("miembros");
 
 Route::get('/miembros/create', function () {
     return view("miembros.create") ; 
