@@ -26,7 +26,16 @@ Auth::routes(["register"=>false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Route::get('/miembros',)->name("pruebagit");
+Route::get('/miembros',[MiembroController::class , "index" ])->name("miembros");
+
+Route::get('/miembros/create', [MiembroController::class , "create"])->name("miembros.create");
+
+
+
+//Route procesa informacion 
+
+Route::post('/miembros/create', [MiembroController::class , "store"])->name("miembros.store");
+
 
 
 
@@ -40,10 +49,5 @@ Route::get('/prueba', function () {
     return view("prueba") ; 
 });
 
-Route::get('/miembros',[MiembroController::class , "index" ])->name("miembros");
-
-Route::get('/miembros/create', function () {
-    return view("miembros.create") ; 
-})->name("miembros.create");
 
 
