@@ -7,7 +7,7 @@
                 <h2> Registrar Miembro</h2>
             </div>
             <div class="card-body">
-                <form action="{{ route('miembros.store') }}" method="POST">
+                <form action="{{ route('miembros.store') }}" method="POST"  enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                         <div class=" col-lg-6 col-xl-3">
