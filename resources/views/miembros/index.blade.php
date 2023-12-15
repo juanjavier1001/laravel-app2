@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
+
 @section('content')
     <div class="row-12">
         <div class="card {{-- card-outline  card-primary --}} card-primary shadow">

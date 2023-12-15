@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMiembro;
 use App\Models\Miembro;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class MiembroController extends Controller
     
     //controller para insertar dato 
     
-    public function store (Request $request) {
+    public function store (StoreMiembro $request) {
         
          $fileName = time().".".$request->foto->extension();
          
