@@ -22,19 +22,24 @@ Route::get('/', function () {
 
 //restrinjo ruta register
 
-Auth::routes(["register"=>false]);
+Auth::routes(["register" => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/miembros',[MiembroController::class , "index" ])->name("miembros");
 
-Route::get('/miembros/create', [MiembroController::class , "create"])->name("miembros.create");
+//Get Miembros
+Route::get('/miembros', [MiembroController::class, "index"])->name("miembros");
+//Get Miembro
+Route::get('/miembros/show/{id}', [MiembroController::class, "show"])->name("miembros.show");
+
+//Create Miembro
+Route::get('/miembros/create', [MiembroController::class, "create"])->name("miembros.create");
 
 
 
 //Route procesa informacion 
 
-Route::post('/miembros/create', [MiembroController::class , "store"])->name("miembros.store");
+Route::post('/miembros/create', [MiembroController::class, "store"])->name("miembros.store");
 
 
 
@@ -43,11 +48,8 @@ Route::post('/miembros/create', [MiembroController::class , "store"])->name("mie
 
 //Pruebas 
 
-Route::get('/pruebagit',pruebaController::class)->name("pruebagit");
+Route::get('/pruebagit', pruebaController::class)->name("pruebagit");
 
 Route::get('/prueba', function () {
-    return view("prueba") ; 
+    return view("prueba");
 });
-
-
-
