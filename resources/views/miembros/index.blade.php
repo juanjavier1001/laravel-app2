@@ -60,9 +60,9 @@
                                 <td>{{ $miembro->fecha_ingreso }}</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a href="{{ route('miembros.show', $miembro->id) }}" class="btn btn-primary"> <i
-                                                class="bi bi-eye"></i></a>
-                                        <a href="#" class="btn btn-success"><i class="bi bi-pencil"></i></a>
+                                        <a href="{{ route('miembros.show', $miembro->id) }}" class="btn btn-primary">
+                                            <i class="bi bi-eye"></i></a>
+                                        <a href="{{route("miembros.edit" , $miembro->id)}}" class="btn btn-success"><i class="bi bi-pencil"></i></a>
                                         <a href="#" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                                     </div>
                                 </td>

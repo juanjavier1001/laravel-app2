@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class MiembroController extends Controller
 {
+
+    //controller para mostrar todos los miembros 
+
     public function index()
     {
 
@@ -18,11 +21,35 @@ class MiembroController extends Controller
     }
 
 
+    // controller para mostrar la vista para crear un Miembro 
+
     public function create()
     {
         return view("miembros.create");
     }
 
+    // controller para mostrar un Miembro 
+    
+    public function show($id)
+    {
+
+        $miembro = Miembro::find($id);
+
+        return view("miembros.show", compact("miembro"));
+    }
+
+    // controller para editar un Miembro 
+    
+    public function edit($id)
+    {
+
+        $miembro = Miembro::find($id) ; 
+        return view("miembros.edit" , compact("miembro")) ;
+
+    }
+   
+   
+   
     //Controllers para procesar datos
 
     //controller para insertar dato 
@@ -55,11 +82,17 @@ class MiembroController extends Controller
         return redirect()->route("miembros")->with("miembroAgregado", "Miembro guardado con exito");
     }
 
-    public function show($id)
-    {
 
-        $miembro = Miembro::find($id);
 
-        return view("miembros.show", compact("miembro"));
+    public function update (Request $request , $id) {
+
+    $fileName = time() . "." . $request->foto->extension();
+       $miembro =  Miembro::find($id) ;
+       $miembro->foto = $fileName ;
+
+
+        return $miembro ; 
     }
+
+
 }

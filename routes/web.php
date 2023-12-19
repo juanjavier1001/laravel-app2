@@ -29,11 +29,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Get Miembros
 Route::get('/miembros', [MiembroController::class, "index"])->name("miembros");
-//Get Miembro
-Route::get('/miembros/show/{id}', [MiembroController::class, "show"])->name("miembros.show");
 
 //Create Miembro
 Route::get('/miembros/create', [MiembroController::class, "create"])->name("miembros.create");
+
+//Get Miembro
+Route::get('/miembros/show/{id}', [MiembroController::class, "show"])->name("miembros.show");
+
+// Edit Miembro 
+Route::get('/miembros/edit/{id}', [MiembroController::class, "edit"])->name("miembros.edit");
+
+
 
 
 
@@ -41,8 +47,13 @@ Route::get('/miembros/create', [MiembroController::class, "create"])->name("miem
 
 Route::post('/miembros/create', [MiembroController::class, "store"])->name("miembros.store");
 
+Route::put('/miembros/update/{id}', [MiembroController::class, "update"])->name("miembros.update");
 
 
+
+//Prueba Route Resource 
+
+/* Route::resource() */
 
 
 

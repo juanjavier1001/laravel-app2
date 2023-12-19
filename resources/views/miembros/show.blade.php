@@ -4,45 +4,74 @@
     <div class="col-12 col-lg-9">
         <div class="card card-widget widget-user shadow">
             <div class="widget-user-header bg-danger">
-                <h3 class="widget-user-username">{{ $miembro->nombre }} {{ $miembro->apellido }}</h3>
+                <h1>{{ $miembro->nombre }} {{ $miembro->apellido }}</h1>
                 {{-- <h5 class="widget-user-desc">Founder &amp; CEO</h5> --}}
             </div>
             <div class="widget-user-image">
-                <img class="img-circle elevation-2" src="../../dist/img/user4-128x128.jpg" alt="User Avatar"
+                <img class="img-circle elevation-2 " src="{{asset("storage/imagesMiembro/".$miembro->foto)}}" alt="User Avatar"
                     class="img-circle img-fluid">
             </div>
             <div class="card-footer">
                 <div class="row">
                     <div class="col-sm-3 border-right">
                         <div class="description-block">
-                            <h5 class="description-header">{{ $miembro->email }}</h5>
-                            <span class="description-text">Email</span>
+                            <h5 class="description-header">Email</h5>
+                            <span class="description-text">{{ $miembro->email }}</span>
                         </div>
 
                     </div>
 
                     <div class="col-sm-3 border-right">
                         <div class="description-block">
-                            <h5 class="description-header">{{ $miembro->ministerio }}13,000</h5>
-                            <span class="description-text">Ministerio</span>
+                            <h5 class="description-header">Direccion</h5>
+                            <span class="description-text">{{ $miembro->direccion }}</span>
                         </div>
 
                     </div>
 
                     <div class="col-sm-3 border-right">
-                        <div class="description-block">
-                            <h5 class="description-header">{{ $miembro->fecha_nacimiento }}</h5>
-                            <span class="description-text">Fecha de nacimiento</span>
+                        <div class="description-block ">
+                            <h5 class="description-header">Telefono</h5>
+                            <span class="description-text">{{ $miembro->telefono }}</span>
                         </div>
 
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3 border-right">
                         <div class="description-block">
-                            <h5 class="description-header">{{ $miembro->telefono }}</h5>
-                            <span class="description-text">Telefono</span>
+                            <h5 class="description-header">Fecha de nacimiento</h5>
+                            <span class="description-text">{{ $miembro->fecha_nacimiento }}</span>
                         </div>
 
                     </div>
+
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">Genero</h5>
+                            <span class="description-text">{{ $miembro->genero}}</span>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">Ministerio</h5>
+                            <span class="description-text">{{ $miembro->ministerio}}</span>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">Fecha de Ingreso</h5>
+                            <span class="description-text">{{ $miembro->fecha_ingreso}}</span>
+                        </div>
+                        
+                    </div>
+                  
+                    
 
                 </div>
 
@@ -50,7 +79,11 @@
         </div>
     </div>
 
-    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+
+
+    {{-- perfil 2 --}}
+
+   {{--  <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
         <div class="card bg-light d-flex flex-fill">
             <div class="card-header text-muted border-bottom-0">
                 Digital Strategist
@@ -83,5 +116,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
