@@ -5,12 +5,20 @@
     @if (session('miembroAgregado'))
         <script>
             Swal.fire({
-                title: "Exito!",
+                title: "Agregado!",
                 text: "{{ session('miembroAgregado') }}",
                 icon: "success"
             });
         </script>
-    @endif
+        @elseif (session('miembroActualizado'))
+        <script>
+            Swal.fire({
+                title: "Actualizado!",
+                text: "{{ session('miembroActualizado') }}",
+                icon: "success"
+            });
+            </script>
+    @endif 
 
     <div class="row-12">
         <div class="card {{-- card-outline  card-primary --}} card-primary shadow">

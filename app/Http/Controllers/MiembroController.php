@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMiembro;
 use App\Models\Miembro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MiembroController extends Controller
 {
@@ -56,13 +57,13 @@ class MiembroController extends Controller
 
     public function store(StoreMiembro $request)
     {
-
+        
         $fileName = time() . "." . $request->foto->extension();
-
+        
         $request->foto->storeAs("public/imagesMiembro", $fileName);
-
+        
         $miembro = new Miembro();
-
+        
         $miembro->nombre = $request->nombre;
         $miembro->apellido = $request->apellido;
         $miembro->email = $request->email;
@@ -75,24 +76,44 @@ class MiembroController extends Controller
         $miembro->ministerio = $request->ministerio;
         $miembro->estado = "1";
         $miembro->fecha_ingreso = now();
-
-
+        
+        
         $miembro->save();
 
         return redirect()->route("miembros")->with("miembroAgregado", "Miembro guardado con exito");
     }
-
+    
 
 
     public function update (Request $request , $id) {
 
-    $fileName = time() . "." . $request->foto->extension();
-       $miembro =  Miembro::find($id) ;
-       $miembro->foto = $fileName ;
+        $miembro =  Miembro::find($id) ;
+        
+        $miembro->nombre = $request->nombre;
+        $miembro->apellido = $request->apellido;
+        $miembro->email = $request->email;
+        $miembro->telefono = $request->telefono;
+        $miembro->fecha_nacimiento = $request->fecha_nacimiento;
+        if($request->foto) {
+            Storage::delete("public/imagesMiembro/".$miembro->foto);
+            $fileName = time() . "." . $request->foto->extension();
+            $request->foto->storeAs("public/imagesMiembro", $fileName);
+            $miembro->foto = $fileName;
+        }
+        //$miembro->foto = $request->file('foto')->store('foto_miembros','public');    
+        $miembro->genero = $request->genero;
+        $miembro->direccion = $request->direccion;
+        $miembro->ministerio = $request->ministerio;
+        $miembro->estado = "1";
+        $miembro->fecha_ingreso = now();    
+        
+        $miembro->save() ;
+
+        return redirect()->route("miembros")->with("miembroActualizado" , "Miembro actualizado con exito") ;
 
 
-        return $miembro ; 
+        
     }
-
+    
 
 }

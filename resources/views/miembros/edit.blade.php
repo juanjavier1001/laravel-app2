@@ -79,7 +79,6 @@
                             <p>no hay foto</p>
                             @else <img src="{{asset("storage/imagesMiembro/".$miembro->foto)}}" width="80%" alt="">
                             @endif
-
                         </output>
                         <script>
                             function archivo(evt){

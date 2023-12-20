@@ -20,7 +20,7 @@ class MiembroFactory extends Factory
             "nombre"=>$this->faker->name , 
             "apellido"=>$this->faker->lastname,
             "direccion"=>$this->faker->address,
-            "telefono"=>$this->faker->phoneNumber,
+            "telefono"=>"3813452278",
             "fecha_nacimiento"=> "2000-05-06", 
             "genero"=>$this->faker->randomElement(["masculino" , "femenino"]),
             "email"=>$this->faker->unique()->safeEmail,
