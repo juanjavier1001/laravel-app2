@@ -105,7 +105,7 @@ class MiembroController extends Controller
         $miembro->genero = $request->genero;
         $miembro->direccion = $request->direccion;
         $miembro->ministerio = $request->ministerio;
-        $miembro->estado = "1";
+        $miembro->estado = 1;
         $miembro->fecha_ingreso = now();    
         
         $miembro->save() ;
@@ -133,6 +133,28 @@ class MiembroController extends Controller
         
         return redirect()->route("miembros")->with("miembroEliminado" , "se elimino correctamente") ;
     }
+
+
+
+    //Controller para modificar el status 
+
+    public function updateStatus ($id) {
+
+    $miembro = Miembro::find($id) ;
+
+        if($miembro){
+            if($miembro->estado){
+                $miembro->estado = 0 ;
+            }
+            else {
+                $miembro->estado = 1 ;
+            } 
+            $miembro->save() ;
+        }
+
+            return back(); 
+    }
+
 
 
 

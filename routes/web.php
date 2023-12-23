@@ -56,6 +56,12 @@ Route::put('/miembros/update/{id}', [MiembroController::class, "update"])->name(
 Route::delete('/miembros/delete/{id}', [MiembroController::class, "destroy"])->name("miembros.destroy");
 
 
+//Route boton activo | inactivo 
+Route::get('/miembros/status/{id}', [MiembroController::class, "updateStatus"])->name("miembros.updateStatus");
+
+
+
+
 
 //Prueba Route Resource 
 

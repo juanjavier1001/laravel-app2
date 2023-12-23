@@ -97,7 +97,9 @@
                                 <td>{{ $miembro->apellido }}</td>
                                 <td>{{ $miembro->direccion }}</td>
                                 <td>{{ $miembro->email }}</td>
-                                <td>{{ $miembro->estado }}</td>
+                                <td style="text-align: center">
+                                    <a href="{{ route("miembros.updateStatus", $miembro->id) }}" class="btn rounded-pill btn-{{ $miembro->estado ? "success" : "danger" }} ">{{$miembro->estado ? "activo" : "inactivo" }}</a>
+                                </td>
                                 <td>{{ $miembro->fecha_ingreso }}</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
