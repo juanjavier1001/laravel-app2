@@ -54,7 +54,7 @@ class MiembroController extends Controller
     //Controllers para procesar datos
 
     //controller para insertar dato 
-
+    
     public function store(StoreMiembro $request)
     {
         
@@ -79,12 +79,13 @@ class MiembroController extends Controller
         
         
         $miembro->save();
-
+        
         return redirect()->route("miembros")->with("miembroAgregado", "Miembro guardado con exito");
     }
     
-
-
+    
+    //controller para actualizar dato 
+    
     public function update (Request $request , $id) {
 
         $miembro =  Miembro::find($id) ;
@@ -108,12 +109,31 @@ class MiembroController extends Controller
         $miembro->fecha_ingreso = now();    
         
         $miembro->save() ;
-
+        
         return redirect()->route("miembros")->with("miembroActualizado" , "Miembro actualizado con exito") ;
-
-
+        
+        
         
     }
     
+    //controller para eliminar dato 
+    
+    public function destroy ($id){
+
+        
+        //Miembro::destroy($id)
+        
+        $miembro = Miembro::find($id);
+        $miembro->delete();
+        //solucion jc : si tiene foto que se borre
+        if($miembro->foto){
+            Storage::delete("public/imagesMiembro/".$miembro->foto);
+        } 
+        
+        
+        return redirect()->route("miembros")->with("miembroEliminado" , "se elimino correctamente") ;
+    }
+
+
 
 }

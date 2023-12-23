@@ -2,7 +2,32 @@
 
 
 @section('content')
-    @if (session('miembroAgregado'))
+
+{{-- <script>
+
+    $('.form-delete').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+    if (result.isConfirmed) {
+        Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+        icon: "success"
+      });
+    }
+    });
+    });
+  </script> --}}
+
+  @if (session('miembroAgregado'))
         <script>
             Swal.fire({
                 title: "Agregado!",
@@ -15,6 +40,14 @@
             Swal.fire({
                 title: "Actualizado!",
                 text: "{{ session('miembroActualizado') }}",
+                icon: "success"
+            });
+            </script>
+        @elseif (session('miembroEliminado'))
+        <script>
+            Swal.fire({
+                title: "Eliminado!",
+                text: "{{ session('miembroEliminado') }}",
                 icon: "success"
             });
             </script>
@@ -71,8 +104,14 @@
                                         <a href="{{ route('miembros.show', $miembro->id) }}" class="btn btn-primary">
                                             <i class="bi bi-eye"></i></a>
                                         <a href="{{route("miembros.edit" , $miembro->id)}}" class="btn btn-success"><i class="bi bi-pencil"></i></a>
-                                        <a href="#" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-                                    </div>
+                                            <form action="{{route("miembros.destroy" ,$miembro->id)}}" class="formulario-eliminar" method="POST" >
+                                                @csrf
+                                                @method("delete")
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -128,8 +167,79 @@
                 "responsive": true,
             }); */
         });
+
+
+//capturo el evento del boton eliminar y evito que se recargue y envie los datos del form cuando aprete el boton
+
+        $('.formulario-eliminar').submit(function(e){
+            e.preventDefault();
+            Swal.fire({
+        title: "Estas seguro?",
+        text: "No podras revertir esto!",
+        icon: "Cuidado",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si , borrar miembro!",
+        cancelButtonText: "Cancelar",
+        }).then((result) => {
+        if (result.isConfirmed) {
+        this.submit();
+    }
+    else if (result.dismiss === Swal.DismissReason.cancel){
+        Swal.fire({
+      title: "Cancelado",
+      text: "Tu archivo esta seguro :)",
+      icon: "error"
+    }); 
+    }
+        });
+        });
+
+    
     </script>
 @endsection
+
+
+{{--  $(".formulario-jc").submit(function(e){
+    e.preventDefault() ; 
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: "btn btn-success",
+    cancelButton: "btn btn-danger"
+  },
+  buttonsStyling: false
+});
+swalWithBootstrapButtons.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonText: "Yes, delete it!",
+  cancelButtonText: "No, cancel!",
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    console.log(e);
+    this.submit();
+  } else if (
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire({
+      title: "Cancelled",
+      text: "Your imaginary file is safe :)",
+      icon: "error"
+    });
+  }
+}); 
+}) 
+--}}
+
+        
+        
+
+
+
 
 
 

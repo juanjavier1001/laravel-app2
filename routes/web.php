@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MiembroController;
+use App\Http\Controllers\PanelController;
 use App\Http\Controllers\pruebaController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('index');
-})->middleware("auth");
+})->middleware("auth"); */
+
+Route::get('/', [PanelController::class , "index"] );
+
 
 
 //restrinjo ruta register
@@ -48,6 +52,8 @@ Route::get('/miembros/edit/{id}', [MiembroController::class, "edit"])->name("mie
 Route::post('/miembros/create', [MiembroController::class, "store"])->name("miembros.store");
 
 Route::put('/miembros/update/{id}', [MiembroController::class, "update"])->name("miembros.update");
+
+Route::delete('/miembros/delete/{id}', [MiembroController::class, "destroy"])->name("miembros.destroy");
 
 
 
