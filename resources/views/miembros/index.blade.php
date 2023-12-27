@@ -2,8 +2,7 @@
 
 
 @section('content')
-
-{{-- <script>
+    {{-- <script>
 
     $('.form-delete').submit(function(e){
         e.preventDefault();
@@ -27,7 +26,7 @@
     });
   </script> --}}
 
-  @if (session('miembroAgregado'))
+    @if (session('miembroAgregado'))
         <script>
             Swal.fire({
                 title: "Agregado!",
@@ -35,23 +34,23 @@
                 icon: "success"
             });
         </script>
-        @elseif (session('miembroActualizado'))
+    @elseif (session('miembroActualizado'))
         <script>
             Swal.fire({
                 title: "Actualizado!",
                 text: "{{ session('miembroActualizado') }}",
                 icon: "success"
             });
-            </script>
-        @elseif (session('miembroEliminado'))
+        </script>
+    @elseif (session('miembroEliminado'))
         <script>
             Swal.fire({
                 title: "Eliminado!",
                 text: "{{ session('miembroEliminado') }}",
                 icon: "success"
             });
-            </script>
-    @endif 
+        </script>
+    @endif
 
     <div class="row-12">
         <div class="card {{-- card-outline  card-primary --}} card-primary shadow">
@@ -98,22 +97,25 @@
                                 <td>{{ $miembro->direccion }}</td>
                                 <td>{{ $miembro->email }}</td>
                                 <td style="text-align: center">
-                                    <a href="{{ route("miembros.updateStatus", $miembro->id) }}" class="btn rounded-pill btn-{{ $miembro->estado ? "success" : "danger" }} ">{{$miembro->estado ? "activo" : "inactivo" }}</a>
+                                    <a href="{{ route('miembros.updateStatus', $miembro->id) }}"
+                                        class="btn rounded-pill btn-{{ $miembro->estado ? 'success' : 'danger' }} ">{{ $miembro->estado ? 'activo' : 'inactivo' }}</a>
                                 </td>
                                 <td>{{ $miembro->fecha_ingreso }}</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <a href="{{ route('miembros.show', $miembro->id) }}" class="btn btn-primary">
                                             <i class="bi bi-eye"></i></a>
-                                        <a href="{{route("miembros.edit" , $miembro->id)}}" class="btn btn-success"><i class="bi bi-pencil"></i></a>
-                                            <form action="{{route("miembros.destroy" ,$miembro->id)}}" class="formulario-eliminar" method="POST" >
-                                                @csrf
-                                                @method("delete")
-                                                <button type="submit" class="btn btn-danger">
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                            </form>
-                                        </div>
+                                        <a href="{{ route('miembros.edit', $miembro->id) }}" class="btn btn-success"><i
+                                                class="bi bi-pencil"></i></a>
+                                        <form action="{{ route('miembros.destroy', $miembro->id) }}"
+                                            class="formulario-eliminar" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -171,34 +173,31 @@
         });
 
 
-//capturo el evento del boton eliminar y evito que se recargue y envie los datos del form cuando aprete el boton
+        //capturo el evento del boton eliminar y evito que se recargue y envie los datos del form cuando aprete el boton
 
-        $('.formulario-eliminar').submit(function(e){
+        $('.formulario-eliminar').submit(function(e) {
             e.preventDefault();
             Swal.fire({
-        title: "Estas seguro?",
-        text: "No podras revertir esto!",
-        icon: "Cuidado",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si , borrar miembro!",
-        cancelButtonText: "Cancelar",
-        }).then((result) => {
-        if (result.isConfirmed) {
-        this.submit();
-    }
-    else if (result.dismiss === Swal.DismissReason.cancel){
-        Swal.fire({
-      title: "Cancelado",
-      text: "Tu archivo esta seguro :)",
-      icon: "error"
-    }); 
-    }
+                title: "Estas seguro?",
+                text: "No podras revertir esto!",
+                icon: "Cuidado",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si , borrar miembro!",
+                cancelButtonText: "Cancelar",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire({
+                        title: "Cancelado",
+                        text: "Tu archivo esta seguro :)",
+                        icon: "error"
+                    });
+                }
+            });
         });
-        });
-
-    
     </script>
 @endsection
 
@@ -237,8 +236,8 @@ swalWithBootstrapButtons.fire({
 }) 
 --}}
 
-        
-        
+
+
 
 
 

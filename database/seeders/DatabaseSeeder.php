@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Miembro;
+use App\Models\Ministerio;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,8 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-         Miembro::factory(100)->create();   
-
+         //Miembro::factory(100)->create();   
+         Ministerio::factory(10)->create();
 
         // \App\Models\User::factory(10)->create();
 

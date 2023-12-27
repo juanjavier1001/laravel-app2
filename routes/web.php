@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MiembroController;
+use App\Http\Controllers\MinisterioController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\pruebaController;
 use Illuminate\Support\Facades\Route;
@@ -19,20 +20,25 @@ use Illuminate\Support\Facades\Route;
 /* Route::get('/', function () {
     return view('index');
 })->middleware("auth"); */
-
-Route::get('/', [PanelController::class , "index"] );
-
-
-
 //restrinjo ruta register
 
+
 Auth::routes(["register" => true]);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+//RUTA Principal 
+
+Route::get('/', [PanelController::class , "index"] )->middleware("auth");
+
+//END RUTA Principal 
+
+//RUTAS MIEMBROS 
+
 //Get Miembros
-Route::get('/miembros', [MiembroController::class, "index"])->name("miembros");
+Route::get('/miembros', [MiembroController::class, "index"])->name("miembros")->middleware("auth");
 
 //Create Miembro
 Route::get('/miembros/create', [MiembroController::class, "create"])->name("miembros.create");
@@ -42,9 +48,6 @@ Route::get('/miembros/show/{id}', [MiembroController::class, "show"])->name("mie
 
 // Edit Miembro 
 Route::get('/miembros/edit/{id}', [MiembroController::class, "edit"])->name("miembros.edit");
-
-
-
 
 
 //Route procesa informacion 
@@ -58,14 +61,23 @@ Route::delete('/miembros/delete/{id}', [MiembroController::class, "destroy"])->n
 
 //Route boton activo | inactivo 
 Route::get('/miembros/status/{id}', [MiembroController::class, "updateStatus"])->name("miembros.updateStatus");
+Route::get('/ministerios/status/{id}', [MinisterioController::class , "updateStatus"])->name("ministerios.updateStatus");
+
+//END RUTAS MIEMBROS 
+
+
+//RUTAS MINISTERIOS 
+
+Route::resource("ministerios" , MinisterioController::class) ; 
+
+//END RUTAS MINISTERIOS 
 
 
 
 
 
-//Prueba Route Resource 
 
-/* Route::resource() */
+
 
 
 

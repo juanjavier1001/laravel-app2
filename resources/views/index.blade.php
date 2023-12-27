@@ -1,12 +1,21 @@
 @extends('layouts.admin')
 
 @section('content')
+                {{-- defino variables --}}
                 <?php
-                $contador = 20 ;
+                $contadorMiembros = 0 ;
+                $contadorMinisterios = 0 ;
                 ?>
+                {{-- recorro registros de la tabla Miembros--}}
                 @foreach ($miembros as $miembro)
                 <?php
-                $contador++ ;
+                $contadorMiembros++ ;
+                ?>  
+                @endforeach
+                {{-- recorro registros de la tabla Ministerios--}}
+                @foreach ($ministerios as $ministerio)
+                <?php
+                $contadorMinisterios++ ;
                 ?>  
                 @endforeach
 <div class="row">
@@ -14,7 +23,7 @@
         <div class="small-box bg-success">
             <div class="inner">
                 <h3>
-                    {{$contador}}
+                    {{$contadorMiembros}}
                 </h3>
                 <p>Miembros</p>
             </div>
@@ -27,13 +36,13 @@
     <div class="col-md-3">
         <div class="small-box bg-danger">
             <div class="inner">
-                <h3>10</h3>
-                <p>Clubes</p>
+                <h3>{{ $contadorMinisterios }}</h3>
+                <p>Ministerios</p>
         </div>
         <div class="icon mb-3">
             <i class="bi bi-person-check-fill"></i>
         </div>
-        <a href="#" class="small-box-footer">Mas informacion<i class="fas fa-arrow-circle-right"></i></a>
+        <a href="{{ route("ministerios.index") }}" class="small-box-footer">Mas informacion<i class="fas fa-arrow-circle-right"></i></a>
     </div>
 </div>
     <div class="col-md-3">
@@ -52,7 +61,7 @@
         <div class="small-box bg-primary">
             <div class="inner">
                 <h3>5</h3>
-                <p>Ministerios</p>
+                <p>Clubes</p>
         </div>
         <div class="icon mb-3">
             <i class="bi bi-person-check-fill"></i>

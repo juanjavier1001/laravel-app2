@@ -25,12 +25,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
     {{-- sweet alert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   {{-- iconos de admin lte ver pq no funciona --}}
+    {{-- iconos de admin lte ver pq no funciona --}}
     <!-- Icon ionic -->
     {{-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> --}}
     
+    {{-- CDN CKeditor --}}
+    {{-- <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script> --}}
+    {{-- CDN CKeditor nuevo --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
 
+   
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -257,13 +262,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('miembros') }}" class="nav-link ">
+                                    <a href="{{route("ministerios.index")}}" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>lista de ministerios</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('miembros.create') }}" class="nav-link">
+                                    <a href="{{ route('ministerios.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Agregar ministerio</p>
                                     </a>
