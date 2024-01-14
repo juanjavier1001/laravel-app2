@@ -4,6 +4,8 @@ use App\Http\Controllers\MiembroController;
 use App\Http\Controllers\MinisterioController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\pruebaController;
+use App\Http\Controllers\UsuariojcController;
+use App\Http\Controllers\UsuariosJcController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 //restrinjo ruta register
 
 
-Auth::routes(["register" => true]);
+Auth::routes(["register" => false]);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -71,6 +73,12 @@ Route::get('/ministerios/status/{id}', [MinisterioController::class , "updateSta
 Route::resource("ministerios" , MinisterioController::class) ; 
 
 //END RUTAS MINISTERIOS 
+
+//RUTAS USUARIOS 
+
+    
+
+//END RUTAS USUARIOS 
 
 
 

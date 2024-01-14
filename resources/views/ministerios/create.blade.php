@@ -9,8 +9,8 @@
             <div class="card-body">
                 <form action="{{ route('ministerios.store') }}" method="POST"  enctype="multipart/form-data">
                     @csrf
-                    <div class="row mb-3">
-                        <div class=" col-lg-6 col-xl-3">
+                    <div class="row mb-4">
+                        <div class=" col-md-6 col-xl-3 mb-4">
                             <label for="exampleInputNombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="exampleInputNombre" required >
                             <small style="color: red">
@@ -18,9 +18,17 @@
                                 @enderror
                             </small>    
                             </div>
-                            <div class=" col-lg-6 col-xl-3">
+                            <div class=" col-lg-12 ">
                                 <label for="exampleInputDescripcion" class="form-label">Descripcion</label>
-                                <input type="text" class="form-control" name="descripcion" id="exampleInputDescripcion" required >
+                                <textarea name="descripcion" id="exampleInputDescripcion" cols="30" rows="10" ></textarea>
+                                <script>
+                                    ClassicEditor
+                                    .create( document.querySelector( '#exampleInputDescripcion' ) )
+                                    .catch( error => {
+                                        console.error( error );
+                                    } );
+                                    </script>
+                                {{-- <input type="text" class="form-control" name="descripcion" id="exampleInputDescripcion" required > --}}
                                 @error('descripcion'){{ $message}} @enderror
                             </div>
                         </div>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ministerios', function (Blueprint $table) {
             $table->id();
             $table->string("nombre",255);
-            $table->string("descripcion",255);
+            $table->text("descripcion")->nullable();
             $table->string("estado",5);
             $table->string("fecha_ingreso",50);
             $table->timestamps();

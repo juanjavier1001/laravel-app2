@@ -29,13 +29,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Icon ionic -->
     {{-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> --}}
-    
+
     {{-- CDN CKeditor --}}
     {{-- <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script> --}}
     {{-- CDN CKeditor nuevo --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
 
-   
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -201,7 +201,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                        <a href="#" class="d-block">Javier{{-- {{ Auth::user()->name }} --}}</a>
                     </div>
                 </div>
 
@@ -224,6 +224,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon">
+                                    <i class="bi bi-bank"></i>
+                                </i>
+                                <p>
+                                    Usuarios
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('ministerios.index') }}" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>lista de Usuarios</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('ministerios.create') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Agregar Usuario</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon">
@@ -250,6 +276,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </ul>
                         </li>
 
+
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon">
@@ -262,7 +289,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route("ministerios.index")}}" class="nav-link ">
+                                    <a href="{{ route('ministerios.index') }}" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>lista de ministerios</p>
                                     </a>

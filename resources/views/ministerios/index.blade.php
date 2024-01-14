@@ -33,7 +33,7 @@
             <div class="card-header">
                 <h2 class="d-flex justify-content-between"> Lista de Ministerios
                     <div class="card-tools">
-                        <a class="btn btn-dark" href="{{ route("ministerios.index") }}">Agregar ministerio
+                        <a class="btn btn-dark" href="{{ route("ministerios.create") }}">Agregar ministerio
                         </a>
                     </div>
                 </h2>
@@ -59,7 +59,7 @@
                             <tr>
                                 <td>{{ $contador++ }}</td>
                                 <td>{{ $ministerio->nombre }}</td>
-                                <td>{{ $ministerio->descripcion }}</td>
+                                <td>{!! $ministerio->descripcion !!}</td>
                                 <td style="text-align: center">
                                     <a href="{{ route('ministerios.updateStatus',$ministerio->id) }}"
                                         class="btn rounded-pill btn-{{ $ministerio->estado ? 'success' : 'danger' }} ">{{ $ministerio->estado ? 'activo' : 'inactivo' }}</a>
