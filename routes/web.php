@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\MiembroController;
 use App\Http\Controllers\MinisterioController;
 use App\Http\Controllers\PanelController;
@@ -25,7 +26,9 @@ use Illuminate\Support\Facades\Route;
 //restrinjo ruta register
 
 
-Auth::routes(["register" => false]);
+//Auth::routes();
+
+Auth::routes(["register" => true]);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -33,7 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //RUTA Principal 
 
-Route::get('/', [PanelController::class , "index"] )->middleware("auth");
+Route::get('/', [PanelController::class, "index"])->middleware("auth");
 
 //END RUTA Principal 
 
@@ -63,23 +66,30 @@ Route::delete('/miembros/delete/{id}', [MiembroController::class, "destroy"])->n
 
 //Route boton activo | inactivo 
 Route::get('/miembros/status/{id}', [MiembroController::class, "updateStatus"])->name("miembros.updateStatus");
-Route::get('/ministerios/status/{id}', [MinisterioController::class , "updateStatus"])->name("ministerios.updateStatus");
+Route::get('/ministerios/status/{id}', [MinisterioController::class, "updateStatus"])->name("ministerios.updateStatus");
 
 //END RUTAS MIEMBROS 
 
 
 //RUTAS MINISTERIOS 
 
-Route::resource("ministerios" , MinisterioController::class) ; 
+Route::resource("ministerios", MinisterioController::class);
 
 //END RUTAS MINISTERIOS 
 
+
 //RUTAS USUARIOS 
 
-    
+
 
 //END RUTAS USUARIOS 
 
+
+//RUTAS ASISTENCIA 
+
+Route::resource("asistencias", AsistenciaController::class);
+
+//END RUTAS ASISTENCIA
 
 
 

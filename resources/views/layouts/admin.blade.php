@@ -302,6 +302,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon">
+                                    <i class="bi bi-calendar-check-fill"></i>
+                                </i>
+                                <p>
+                                    Asistencias
+
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('ministerios.index') }}" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>lista de Asistencias</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('ministerios.create') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Agregar Asistencias</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
