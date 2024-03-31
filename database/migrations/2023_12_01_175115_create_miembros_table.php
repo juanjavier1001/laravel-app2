@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('miembros', function (Blueprint $table) {
             $table->id();
-            $table->string("nombre" , 100);
-            $table->string('apellido' ,100);
-            $table->string('direccion' ,255);
-            $table->string('telefono' ,100);
-            $table->string('fecha_nacimiento' ,100);
-            $table->string('genero' ,50);
+            $table->string("nombre", 100);
+            $table->string('apellido', 100);
+            $table->string('direccion', 255);
+            $table->string('telefono', 100);
+            $table->string('fecha_nacimiento', 100);
+            $table->string('genero', 50);
             $table->string('email')->unique();
-            $table->string("estado" ,5);
-            $table->string("ministerio" ,255);
+            $table->string("estado", 5);
+            $table->string("ministerio", 255)->nullable();
             $table->timestamps();
         });
     }

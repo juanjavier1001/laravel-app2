@@ -17,17 +17,16 @@ class MiembroFactory extends Factory
     public function definition(): array
     {
         return [
-            "nombre"=>$this->faker->name , 
-            "apellido"=>$this->faker->lastname,
-            "direccion"=>$this->faker->address,
-            "telefono"=>"3813452278",
-            "fecha_nacimiento"=> "2000-05-06", 
-            "genero"=>$this->faker->randomElement(["masculino" , "femenino"]),
-            "email"=>$this->faker->unique()->safeEmail,
-            "estado"=> "1",
-            "ministerio"=> "pastoral",
-            "foto"=> "foto.png",
-            "fecha_ingreso"=> "2023/11/02"
+            "nombre" => $this->faker->name,
+            "apellido" => $this->faker->lastname,
+            "direccion" => $this->faker->address,
+            "telefono" => "3813452278",
+            "fecha_nacimiento" => "2000-05-06",
+            "genero" => $this->faker->randomElement(["masculino", "femenino"]),
+            "email" => $this->faker->unique()->safeEmail,
+            "estado" => "1",
+            "ministerio" => "pastoral",
+            "fecha_ingreso" => "2023/11/02"
         ];
     }
 }

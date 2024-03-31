@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asistencia;
+use App\Models\Miembro;
+use App\Models\Ministerio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 /**
  * Class AsistenciaController
@@ -18,10 +23,15 @@ class AsistenciaController extends Controller
      */
     public function index()
     {
-        $asistencias = Asistencia::paginate();
 
-        return view('asistencia.index', compact('asistencias'))
-            ->with('i', (request()->input('page', 1) - 1) * $asistencias->perPage());
+        //agregar order 
+        //$asistencias = Asistencia::all()->orderBy("id", "desc");
+
+        /* $asistencias = Asistencia::paginate() */
+        $asistencias = Asistencia::all()->sortByDesc("id");
+        return view('asistencia.index', compact('asistencias'));
+
+        /* ->with('i', (request()->input('page', 1) - 1) * $asistencias->perPage()); */
     }
 
     /**
@@ -32,7 +42,13 @@ class AsistenciaController extends Controller
     public function create()
     {
         $asistencia = new Asistencia();
-        return view('asistencia.create', compact('asistencia'));
+
+        $miembros = Miembro::select(
+            "id",
+            DB::raw("CONCAT(nombre,' ',apellido) as nombreCompleto")
+        )->pluck("nombreCompleto", "id");
+
+        return view('asistencia.create', compact('asistencia', 'miembros'));
     }
 
     /**
@@ -43,6 +59,9 @@ class AsistenciaController extends Controller
      */
     public function store(Request $request)
     {
+
+        //return $request;
+
         request()->validate(Asistencia::$rules);
 
         $asistencia = Asistencia::create($request->all());
@@ -61,6 +80,7 @@ class AsistenciaController extends Controller
     {
         $asistencia = Asistencia::find($id);
 
+
         return view('asistencia.show', compact('asistencia'));
     }
 
@@ -74,7 +94,12 @@ class AsistenciaController extends Controller
     {
         $asistencia = Asistencia::find($id);
 
-        return view('asistencia.edit', compact('asistencia'));
+        $miembros = Miembro::select(
+            "id",
+            DB::raw("CONCAT(nombre,' ',apellido) as nombreCompleto")
+        )->pluck("nombreCompleto", "id");
+
+        return view('asistencia.edit', compact('asistencia', 'miembros'));
     }
 
     /**
@@ -86,6 +111,9 @@ class AsistenciaController extends Controller
      */
     public function update(Request $request, Asistencia $asistencia)
     {
+
+        //return request();
+
         request()->validate(Asistencia::$rules);
 
         $asistencia->update($request->all());
@@ -105,5 +133,37 @@ class AsistenciaController extends Controller
 
         return redirect()->route('asistencias.index')
             ->with('success', 'Asistencia deleted successfully');
+    }
+
+    public function reporte()
+    {
+        return view("asistencia.asistenciaReporte");
+    }
+
+    public function reportePdf(Request $request)
+    {
+        //return $request;
+        //return $request->fecha;
+
+        //$asistencias = Asistencia::all()->where("id", 9);
+        //return $asistencias;
+        //$asistencias = Asistencia::all()->where("fecha", "2024-03-10");
+        //return $asistencias;
+        $asistencias = Asistencia::all()->where("fecha", "=", $request->fecha);
+        $pdf = Pdf::loadView('asistencia.asistenciaPdf', compact("asistencias"));
+        return $pdf->stream();
+
+        /* $asistencias = Asistencia::all();
+        return view("asistencia.asistenciaPdf", compact("asistencias")); */
+    }
+
+    public function reportePdfFechas(Request $request)
+    {
+
+        //return $request;
+
+        $asistencias = Asistencia::all()->where("fecha", ">=", $request->fechaInicio)->where("fecha", "<=", $request->fechaFinal);
+        $pdf = Pdf::loadView('asistencia.asistenciaPdfFechas', compact("asistencias"));
+        return $pdf->stream();
     }
 }

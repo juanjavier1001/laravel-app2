@@ -33,7 +33,7 @@
             <div class="card-header">
                 <h2 class="d-flex justify-content-between"> Lista de Ministerios
                     <div class="card-tools">
-                        <a class="btn btn-dark" href="{{ route("ministerios.create") }}">Agregar ministerio
+                        <a class="btn btn-dark" href="{{ route('ministerios.create') }}">Agregar ministerio
                         </a>
                     </div>
                 </h2>
@@ -61,16 +61,18 @@
                                 <td>{{ $ministerio->nombre }}</td>
                                 <td>{!! $ministerio->descripcion !!}</td>
                                 <td style="text-align: center">
-                                    <a href="{{ route('ministerios.updateStatus',$ministerio->id) }}"
+                                    <a href="{{ route('ministerios.updateStatus', $ministerio->id) }}"
                                         class="btn rounded-pill btn-{{ $ministerio->estado ? 'success' : 'danger' }} ">{{ $ministerio->estado ? 'activo' : 'inactivo' }}</a>
                                 </td>
                                 <td>{{ $ministerio->fecha_ingreso }}</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a href="{{ route("ministerios.show", $ministerio->id) }}" class="btn btn-primary">
+                                        <a href="{{ route('ministerios.show', $ministerio->id) }}" class="btn btn-primary">
                                             <i class="bi bi-eye"></i></a>
-                                        <a href="{{ route("ministerios.edit" , $ministerio->id) }}" class="btn btn-success"><i class="bi bi-pencil"></i></a>
-                                        <form action="{{ route("ministerios.destroy" , $ministerio->id) }}" class="formulario-eliminar" method="POST">
+                                        <a href="{{ route('ministerios.edit', $ministerio->id) }}"
+                                            class="btn btn-success"><i class="bi bi-pencil"></i></a>
+                                        <form action="{{ route('ministerios.destroy', $ministerio->id) }}"
+                                            class="formulario-eliminar" method="POST">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger">
@@ -95,7 +97,7 @@
             $("#example1").DataTable({
                 "language": {
                     info: 'Mostrar pagina _PAGE_ de _PAGES_',
-                    lengthMenu: 'Mostrar _MENU_ miembros por pagina',
+                    lengthMenu: 'Mostrar _MENU_ ministerios por pagina',
                     search: "Buscar :",
                     zeroRecords: "Sin resultados encontrados",
                     "paginate": {

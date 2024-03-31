@@ -9,15 +9,23 @@ use Illuminate\Support\Facades\Storage;
 
 class MinisterioController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(["can:Gestionar Ministerios"])->only("create", "update", "destroy", "edit");
+    }
+
+
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $ministerios = Ministerio::all()->sortByDesc("id"); 
-        
-        return view("ministerios.index" , compact("ministerios"));
-        
+        $ministerios = Ministerio::all()->sortByDesc("id");
+
+        return view("ministerios.index", compact("ministerios"));
+
         //return $ministerios ; 
     }
 
@@ -26,7 +34,7 @@ class MinisterioController extends Controller
      */
     public function create()
     {
-        return view("ministerios.create") ;
+        return view("ministerios.create");
     }
 
     /**
@@ -34,26 +42,32 @@ class MinisterioController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $ministerio = new Ministerio() ; 
-        
-        $ministerio->nombre = $request->nombre ;
-        $ministerio->descripcion = $request->descripcion ;
-        $ministerio->estado = 1 ;
-        $ministerio->fecha_ingreso = now() ;
-        if($request->foto){     
+
+        $request->validate([
+            "nombre" => "required",
+            "descripcion" => "required",
+            "foto" => "nullable",
+        ]);
+
+        $ministerio = new Ministerio();
+
+        $ministerio->nombre = $request->nombre;
+        $ministerio->descripcion = $request->descripcion;
+        $ministerio->estado = 1;
+        $ministerio->fecha_ingreso = now();
+        if ($request->foto) {
             $fileName = time() . "." . $request->foto->extension();
             $request->foto->storeAs("public/imagesMinisterio", $fileName);
-            $ministerio->foto = $fileName ;
+            $ministerio->foto = $fileName;
         }
-        
+
         //return $request ;
-        
+
         //return $ministerio ;
 
         $ministerio->save();
 
-        return redirect()->route("ministerios.index") ; 
+        return redirect()->route("ministerios.index");
     }
 
     /**
@@ -62,9 +76,9 @@ class MinisterioController extends Controller
     public function show($id)
     {
 
-        $ministerio = Ministerio::find($id) ; 
+        $ministerio = Ministerio::find($id);
 
-        return view("ministerios.show" , compact("ministerio")) ; 
+        return view("ministerios.show", compact("ministerio"));
     }
 
     /**
@@ -73,9 +87,9 @@ class MinisterioController extends Controller
     public function edit($id)
     {
 
-        $ministerio = Ministerio::find($id) ; 
+        $ministerio = Ministerio::find($id);
 
-        return view("ministerios.edit" , compact("ministerio")) ;
+        return view("ministerios.edit", compact("ministerio"));
     }
 
     /**
@@ -83,23 +97,30 @@ class MinisterioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ministerio =  Ministerio::find($id) ; 
-        
-        $ministerio->nombre = $request->nombre ; 
-        $ministerio->descripcion = $request->descripcion ; 
-        if($request->foto){
-            Storage::delete("public/imagesMinisterio/".$ministerio->foto);
+
+        $request->validate([
+            "nombre" => "required",
+            "descripcion" => "required",
+            "foto" => "nullable",
+        ]);
+
+
+        $ministerio =  Ministerio::find($id);
+
+        $ministerio->nombre = $request->nombre;
+        $ministerio->descripcion = $request->descripcion;
+        if ($request->foto) {
+            Storage::delete("public/imagesMinisterio/" . $ministerio->foto);
             $fileName = time() . "." . $request->foto->extension();
             $request->foto->storeAs("public/imagesMinisterio", $fileName);
-            $ministerio->foto = $fileName ; 
+            $ministerio->foto = $fileName;
         }
 
         //return $ministerio ; 
 
-          $ministerio->save() ;  
+        $ministerio->save();
 
-        return redirect()->route("ministerios.index") ;
-
+        return redirect()->route("ministerios.index");
     }
 
     /**
@@ -108,20 +129,16 @@ class MinisterioController extends Controller
     public function destroy($id)
     {
         $ministerio = Ministerio::find($id);
-        $ministerio->delete() ;
-        if($ministerio->foto){
-            Storage::delete("public/imagesMinisterio/".$ministerio->foto);
-        } 
+        $ministerio->delete();
+        if ($ministerio->foto) {
+            Storage::delete("public/imagesMinisterio/" . $ministerio->foto);
+        }
         return redirect()->route("ministerios.index");
     }
-    
+
     public function updateStatus($id)
     {
-        
-        return "actualizando estado".$id ;
+
+        return "actualizando estado" . $id;
     }
-    
-
-
-
 }

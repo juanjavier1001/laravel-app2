@@ -22,16 +22,15 @@ class StoreMiembro extends FormRequest
     public function rules(): array
     {
         return [
-            
-            "nombre"=>"required",
-            "apellido"=>"required",
-            "email"=>"required",
-            "telefono"=>"required",
-            "fecha_nacimiento"=>"required",
-            "foto"=>"required",
-            "genero"=>"required",
-            "direccion"=>"required",
-            "ministerio"=>"required"
+
+            "nombre" => "required",
+            "apellido" => "required",
+            "email" => ["required", "unique:miembros"],
+            "telefono" => "required",
+            "fecha_nacimiento" => "required",
+            "genero" => "required",
+            "direccion" => "required",
+            "ministerio" => "nullable"
 
         ];
     }

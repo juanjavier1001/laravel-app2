@@ -1,31 +1,15 @@
-@extends('layouts.app')
-
-@section('template_title')
-    {{ __('Update') }} Asistencia
-@endsection
+@extends('layouts.admin')
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="">
-            <div class="col-md-12">
+    @include('asistencia.formEdit')
+@endsection
 
-                @includeif('partials.errors')
-
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Asistencia</span>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('asistencias.update', $asistencia->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
-                            @csrf
-
-                            @include('asistencia.form')
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+@section('script')
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.seleccion_miembros').select2();
+        });
+    </script>
 @endsection

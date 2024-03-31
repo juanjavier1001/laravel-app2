@@ -1,9 +1,4 @@
-@extends('layouts.app')
-
-@section('template_title')
-    {{ $asistencia->name ?? "{{ __('Show') Asistencia" }}
-@endsection
-
+@extends('layouts.admin')
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -11,24 +6,24 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Asistencia</span>
+                            <span class="card-title"> Asistencia del Miembro :
+                                {{ $asistencia->miembro->nombreCompleto2() }}</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('asistencias.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('asistencias.index') }}"> volver </a>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Fecha:</strong>
                             {{ $asistencia->fecha }}
                         </div>
                         <div class="form-group">
-                            <strong>Miembro Id:</strong>
-                            {{ $asistencia->miembro_id }}
+                            <strong>Miembro:</strong>
+                            {{ $asistencia->miembro->nombreCompleto2() }}
                         </div>
-
                     </div>
                 </div>
             </div>

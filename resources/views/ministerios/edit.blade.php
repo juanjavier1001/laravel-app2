@@ -13,7 +13,7 @@
                     <div class="col-lg-6 col-xl-4  mb-4">
                         <label for="exampleInputNombre" class="form-label">Nombre</label>
                         <input type="text" class="form-control" name="nombre" id="exampleInputNombre"
-                            value="{{ $ministerio->nombre }}">
+                            value="{{ old('nombre', $ministerio->nombre) }}" required>
                         <small style="color: red">
                             @error('nombre')
                                 {{ $message }}
@@ -22,8 +22,7 @@
                     </div>
                     <div class="col-12">
                         <label for="editor" class="form-label">Descripcion</label>
-                        <textarea name="descripcion" id="editor" class="form-control" cols="30" rows="10"
-                            >{!!$ministerio->descripcion!!}</textarea>
+                        <textarea name="descripcion" id="editor" class="form-control" cols="30" rows="10">{!! $ministerio->descripcion !!}</textarea>
                         <script>
                             ClassicEditor
                                 .create(document.querySelector('#editor'))
@@ -34,9 +33,11 @@
                         {{--  <script>
                                      CKEDITOR.replace( 'descripcion' );
                              </script> --}}
-                        @error('descripcion')
-                            {{ $message }}
-                        @enderror
+                        <small style="color: red">
+                            @error('descripcion')
+                                {{ $message }}
+                            @enderror
+                        </small>
                     </div>
                 </div>
                 <div class="row mb-4">
