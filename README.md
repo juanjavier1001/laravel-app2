@@ -1,7 +1,7 @@
 
 # Sistema de Asistencias 
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot]([https://via.placeholder.com/468x300?text=App+Screenshot+Here](https://github.com/juanjavier1001/laravel-app2/blob/master/public/dist/img/avatar.png))
 
 ## Installation
 
