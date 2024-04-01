@@ -1,7 +1,7 @@
 
 # Sistema de Asistencias 
 
-![](https://github.com/juanjavier1001/laravel-app2/blob/master/principal.png)
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/principal.png)
 
 ## Installation
 
@@ -39,7 +39,7 @@ Vemos cómo se ha creado la carpeta node_modules.
 
 - Para crearlo podemos duplicar el archivo .env.example, renombrarlo a .env e incluir los datos de conexión de la base de datos que indicamos en el paso anterior.
 
-![]()
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/db.png)
 
 ### 5 Paso 
 #### Generar una clave 
