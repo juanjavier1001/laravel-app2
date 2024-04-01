@@ -39,7 +39,7 @@ Vemos cómo se ha creado la carpeta node_modules.
 
 - Para crearlo podemos duplicar el archivo .env.example, renombrarlo a .env e incluir los datos de conexión de la base de datos que indicamos en el paso anterior.
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![]()
 
 ### 5 Paso 
 #### Generar una clave 
@@ -63,10 +63,10 @@ php artisan migrate --seed
 
 ### Login
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![]()
 
 ### Register 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![]()
 ## Authors
 
 - [@juanjavier1001](https://www.github.com/juanjavier1001)
