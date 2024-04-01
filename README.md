@@ -63,10 +63,10 @@ php artisan migrate --seed
 
 ### Login
 
-![]()
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/login.png)
 
 ### Register 
-![]()
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/register.png)
 ## Authors
 
 - [@juanjavier1001](https://www.github.com/juanjavier1001)
