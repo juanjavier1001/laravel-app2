@@ -57,16 +57,59 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
+### Arrancar Aplicaccion
+- Levantar el servidor de la db  
+- Y ejecutar los siguientes comandos en la terminal 
+
+```bash
+php artisan serve
+```
+
+```bash
+npm run dev
+```
 
 
 # Vista previa de la Aplicaccion
 
 ### Login
-
-![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/login.png)
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/Login.png)
 
 ### Register 
-![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/register.png)
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/Register.png)
+
+### Usuarios 
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/Usuario.png)
+
+### Usuarios Roles  
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/UsuarioRoles.png)
+
+### Miembros   
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/Miembro.png)
+
+### Miembros Show    
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/MiembroShow.png)
+
+### Miembros Edit    
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/MiembroEdit.png)
+
+### Miembros Update    
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/MiembroUpdate.png)
+
+### Miembros Delete     
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/MiembroDelete.png)
+
+### Crear Asistencia     
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/CrearAsistencia.png)
+
+### Roles     
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/Roles.png)
+
+### Roles     
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/Reporte.png)
+
+
+
 ## Authors
 
 - [@juanjavier1001](https://www.github.com/juanjavier1001)
