@@ -84,7 +84,7 @@ npm run dev
 ### Usuarios Roles  
 ![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/UsuarioRoles.png)
 
-<!-- ### Miembros   
+### Miembros   
 ![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/Miembro.png)
 
 ### Miembros Show    
@@ -97,7 +97,7 @@ npm run dev
 ![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/MiembroUpdate.png)
 
 ### Miembros Delete     
-![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/MiembroDelete.png) -->
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/MiembroDelete.png)
 
 ### Crear Asistencia     
 ![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/CrearAsistencia.png)
