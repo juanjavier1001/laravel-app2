@@ -73,10 +73,10 @@ npm run dev
 # Vista previa de la Aplicaccion
 
 ### Login
-![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/Login.png)
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/login.png)
 
 ### Register 
-![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/Register.png)
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/register.png)
 
 ### Usuarios 
 ![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/Usuario.png)
@@ -100,13 +100,13 @@ npm run dev
 ![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/MiembroDelete.png)
 
 ### Crear Asistencia     
-![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/CrearAsistencia.png)
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/crearAsistencia.png)
 
 ### Roles     
-![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/Roles.png)
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/roles.png)
 
 ### Reporte     
-![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/Reporte.png)
+![](https://github.com/juanjavier1001/laravel-app2/blob/master/photos/reporte.png)
 
 
 
