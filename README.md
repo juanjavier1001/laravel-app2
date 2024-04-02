@@ -69,6 +69,13 @@ php artisan serve
 npm run dev
 ```
 
+#### Usuario Admin : 
+- email : javier1001@live.com.ar 
+- contraseña : admin
+
+#### Usuario Invitado: 
+- email : invitado@gmail.com.ar
+- contraseña : invitado
 
 # Vista previa de la Aplicaccion
 
